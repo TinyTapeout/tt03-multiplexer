@@ -8,7 +8,7 @@ smtbmc
 
 [script]
 read -noverific
-read -sv tt_formal.v tt_top.v tt_mux.v tt_ctrl.v tt_prim_buf.v tt_prim_dfrbp.v tt_prim_diode.v tt_prim_inv.v tt_prim_mux2.v tt_prim_mux4.v tt_prim_tbuf_pol.v tt_prim_tbuf.v tt_prim_tie.v tt_prim_zbuf.v tt_um_formal.v tt_user_module_connectivity.v
+read -sv -noblackbox tt_formal.v tt_top.v tt_mux.v tt_ctrl.v tt_logo_top.v tt_logo_bottom.v tt_prim_buf.v tt_prim_dfrbp.v tt_prim_diode.v tt_prim_inv.v tt_prim_mux2.v tt_prim_mux4.v tt_prim_tbuf_pol.v tt_prim_tbuf.v tt_prim_tie.v tt_prim_zbuf.v tt_um_formal.v tt_user_module_connectivity.v
 
 # convert tribuf to logic
 prep -top tt_formal; flatten; tribuf -logic
@@ -19,6 +19,8 @@ tt_formal.v
 ../rtl/tt_top.v
 ../rtl/tt_mux.v
 ../rtl/tt_ctrl.v
+../rtl/tt_logo_top.v
+../rtl/tt_logo_bottom.v
 ../rtl/prim_generic/tt_prim_buf.v
 ../rtl/prim_generic/tt_prim_dfrbp.v
 ../rtl/prim_generic/tt_prim_diode.v

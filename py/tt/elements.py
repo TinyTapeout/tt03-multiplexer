@@ -528,6 +528,20 @@ class Controller(LayoutElement):
 			))
 
 
+class Logo(LayoutElement):
+
+	def __init__(self, layout, variant):
+		# Set mod_name
+		self.mod_name = f'tt_logo_{variant:s}'
+
+		# Super
+		super().__init__(
+			layout,
+			layout.glb.logo.width,
+			layout.glb.logo.height,
+		)
+
+
 class Top(LayoutElement):
 	"""
 	Top level grid aligned area containing all TT elements
@@ -591,6 +605,13 @@ class Top(LayoutElement):
 			( layout.glb.mux.height + layout.glb.margin.y )
 
 		self.add_child(ctrl, Point(ctrl_x, ctrl_y), 'N', name='ctrl_I')
+
+		# Add Logo & Shuttle ID
+		logo_top = Logo(layout, 'top')
+		self.add_child(logo_top, Point(layout.glb.logo.pos_x, layout.glb.logo.top_pos_y), 'N', name='logo_top_I')
+
+		logo_bottom = Logo(layout, 'bottom')
+		self.add_child(logo_bottom, Point(layout.glb.logo.pos_x, layout.glb.logo.bottom_pos_y), 'N', name='logo_bottom_I')
 
 
 class Die(LayoutElement):

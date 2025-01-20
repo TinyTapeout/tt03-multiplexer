@@ -74,6 +74,7 @@ class Layout:
 		glb.ctrl   = ConfigNode()
 		glb.pg_vdd = ConfigNode()
 		glb.pg_vaa = ConfigNode()
+		glb.logo   = ConfigNode()
 
 		# Size of the various busses
 		self.vspine = ConfigNode({
@@ -163,6 +164,14 @@ class Layout:
 
 		glb.pg_vaa.width  = self.cfg.pdk.pwrgate.vaa.width
 		glb.pg_vaa.offset = self._align_x(glb.pg_vaa.width, ceil=True) + glb.margin.x
+
+		# Logo & Shuttle ID
+		glb.logo.width        = self.cfg.tt.logo.size
+		glb.logo.height       = self.cfg.tt.logo.size
+		glb.logo.pos_x        = (glb.top.width - glb.logo.width) // 2
+		glb.logo.top_pos_y    = glb.top.height - glb.logo.height - glb.margin.y
+		glb.logo.bottom_pos_y = glb.margin.y
+
 
 	def _ply_len(self, ply):
 		return sum([x[1] or 1 for x in block_ply])

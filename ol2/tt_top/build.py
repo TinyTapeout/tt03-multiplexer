@@ -129,7 +129,7 @@ if __name__ == '__main__':
 			}
 			if m.mod_name.startswith('tt_um_'):
 				user_modules.append(m.mod_name)
-			elif m.mod_name.startswith('tt_pg_') or m.mod_name.startswith('tt_asw_'):
+			elif m.mod_name.startswith('tt_pg_') or m.mod_name.startswith('tt_asw_') or m.mod_name.startswith('tt_logo_'):
 				macros[m.mod_name].update({
 					'nl': f'dir::verilog/{m.mod_name:s}.v',
 				})
@@ -229,6 +229,7 @@ if __name__ == '__main__':
 		# LVS
 		"MAGIC_DEF_LABELS" : False,
 		"MAGIC_EXT_SHORT_RESISTOR" : True, # Fixes LVS failures when more than two pins are connected to the same net
+		"LVS_FLATTEN_CELLS": ["tt_logo_top", "tt_logo_bottom"],
 	}
 
 	# Update PDN config
